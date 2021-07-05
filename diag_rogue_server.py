@@ -159,7 +159,8 @@ class SAPDiagServerHandler(SAPNIServerHandler):
             self.server.clients[self.client_address].terminal = self.packet[SAPDiagDP].terminal
             print("[*] Client %s set to initialized (terminal: %s)" % (str(self.client_address),
                                                                        self.server.clients[self.client_address].terminal))
-            self.request.send(SAPDiag(compress=0, message=self.make_login_screen()))
+            #self.request.send(SAPDiag(compress=0, message=self.make_login_screen()))
+            self.request.send(SAPDiag(compress=1, message=self.make_error_screen("Test Message !!!")))
         else:
             print("[-] Error during initialization of client %s" % str(self.client_address))
             self.logoff()
